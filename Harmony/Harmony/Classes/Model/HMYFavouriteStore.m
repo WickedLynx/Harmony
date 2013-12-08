@@ -85,7 +85,7 @@ NSString *const HMYFavouritesFileName = @"Favourites.plist";
 
 + (NSString *)favouritesFilePath {
     
-    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
     
     return [documentsDirectory stringByAppendingPathComponent:HMYFavouritesFileName];
     

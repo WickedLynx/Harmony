@@ -14,6 +14,14 @@
 #import "HMYFavourite.h"
 #import "HMYFavouriteStore.h"
 
+typedef NS_ENUM(NSUInteger, HMYFileAction) {
+    HMYFileActionAddToFavourites = 0,
+    HMYFileActionNewFile,
+    HMYFileActionSortByName,
+    HMYFileActionSortByLatest,
+    HMYFileActionSortByType
+};
+
 @interface HMYFilesViewController () <NSFileManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIActionSheetDelegate, UIAlertViewDelegate> {
     
     NSFileManager *_fileManager;
@@ -23,6 +31,9 @@
     __weak HMYFilesView *_filesView;
     
     NSMutableArray *_unfilteredFiles;
+    
+    NSSortDescriptor *_fileSortDescriptor;
+    
 }
 
 - (void)refresh;
@@ -41,6 +52,7 @@
     
     if (self != nil) {
         _browsingHistory = [NSMutableArray arrayWithObject:path];
+        _fileSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES];
     }
     
     return self;
@@ -110,7 +122,7 @@
 
 - (void)touchAdd {
     
-    UIActionSheet *addMenuSheet = [[UIActionSheet alloc] initWithTitle:@"Choose an action" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add to Favourites", @"New Item", nil];
+    UIActionSheet *addMenuSheet = [[UIActionSheet alloc] initWithTitle:@"Choose an action" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add to Favourites", @"New Item", @"Sort by name", @"Sort by Latest", @"Sort by type", nil];
     [addMenuSheet showInView:self.view];
 }
 
@@ -136,11 +148,7 @@
         
     }
     
-    NSSortDescriptor *sortByTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES];
-    NSSortDescriptor *sortByDateModifiedDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateModified" ascending:NO];
-    NSSortDescriptor *sortByNameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    
-    _filesAtCurrentPath = [files sortedArrayUsingDescriptors:@[sortByTypeDescriptor, sortByNameDescriptor, sortByDateModifiedDescriptor]];
+    _filesAtCurrentPath = [files sortedArrayUsingDescriptors:@[_fileSortDescriptor]];
     
     [[_filesView filesTableView] reloadData];
     
@@ -158,6 +166,8 @@
         title = [_browsingHistory firstObject];
     }
     [self setTitle:title];
+    
+    [[_filesView filesTableView] setContentOffset:CGPointZero];
     
     _unfilteredFiles = nil;
 }
@@ -210,6 +220,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [[_filesView searchBar] resignFirstResponder];
+    [[_filesView searchBar] setText:nil];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     HMYFile *theFile = [_filesAtCurrentPath objectAtIndex:[indexPath row]];
@@ -227,8 +240,7 @@
         [self.navigationController pushViewController:textEditor animated:YES];
     }
     
-    [[_filesView searchBar] resignFirstResponder];
-    [[_filesView searchBar] setText:nil];
+    _unfilteredFiles = nil;
     
 }
 
@@ -255,17 +267,58 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     
-    if (buttonIndex == [actionSheet firstOtherButtonIndex]) {
-        
-        HMYFavourite *aFavourite = [[HMYFavourite alloc] initWithName:self.title absolutePath:[_browsingHistory firstObject] dateCreated:[NSDate date]];
-        [self.favouriteStore addFavourite:aFavourite];
-        
-        [self.favouriteStore savePersistently];
-        
-    } else if (buttonIndex == ([actionSheet firstOtherButtonIndex] + 1)) {
-        
+    HMYFileAction action = buttonIndex - [actionSheet firstOtherButtonIndex];
+    
+    switch (action) {
+            
+        case HMYFileActionAddToFavourites: {
+            
+            HMYFavourite *aFavourite = [[HMYFavourite alloc] initWithName:self.title absolutePath:[_browsingHistory firstObject] dateCreated:[NSDate date]];
+            [self.favouriteStore addFavourite:aFavourite];
+            
+            [self.favouriteStore savePersistently];
+            
+            break;
+        }
+            
+        case HMYFileActionNewFile:
+            break;
+            
+        case HMYFileActionSortByName: {
+            
+            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+            _fileSortDescriptor = sortDescriptor;
+            
+            [self refresh];
+            
+            break;
+        }
+            
+        case HMYFileActionSortByLatest: {
+            
+            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateCreated" ascending:NO];
+            _fileSortDescriptor = sortDescriptor;
+            
+            [self refresh];
 
+            break;
+        }
+            
+        case HMYFileActionSortByType: {
+            
+            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES];
+            _fileSortDescriptor = sortDescriptor;
+            
+            [self refresh];
+            
+            break;
+        }
+            
+            
+        default:
+            break;
     }
+    
 }
 
 
