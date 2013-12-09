@@ -53,6 +53,8 @@ typedef NS_ENUM(NSUInteger, HMYFileAction) {
     if (self != nil) {
         _browsingHistory = [NSMutableArray arrayWithObject:path];
         _fileSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES];
+
+        [self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0]];
     }
     
     return self;
@@ -123,7 +125,7 @@ typedef NS_ENUM(NSUInteger, HMYFileAction) {
 - (void)touchAdd {
     
     UIActionSheet *addMenuSheet = [[UIActionSheet alloc] initWithTitle:@"Choose an action" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add to Favourites", @"New Item", @"Sort by name", @"Sort by Latest", @"Sort by type", nil];
-    [addMenuSheet showInView:self.view];
+    [addMenuSheet showFromTabBar:self.tabBarController.tabBar];
 }
 
 #pragma mark - Private methods

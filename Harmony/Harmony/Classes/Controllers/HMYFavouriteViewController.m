@@ -35,6 +35,8 @@
         _favouriteStore = favouriteStore;
         
         [self setTitle:@"Favourites"];
+
+        [self setTabBarItem:[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1]];
     }
     
     return self;

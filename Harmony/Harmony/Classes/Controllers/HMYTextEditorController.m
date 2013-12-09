@@ -11,15 +11,24 @@
 
 #import "HMYFile.h"
 
+#import "MMMarkdown.h"
+#import "HMYHTMLViewController.h"
+
 unsigned long long const HMYEditorMaxFileSize = 50000000; // 5 MB
 
-@interface HMYTextEditorController () <UITextViewDelegate, UIAlertViewDelegate> {
+typedef NS_ENUM(NSInteger, HMYTextEditorActionType) {
+    HMYTextEditorActionTypeRenderHTML = 0,
+    HMYTextEditorActionTypeSave,
+    HMYTextEditorActionTypeRevertToSaved
+};
+
+@interface HMYTextEditorController () <UITextViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
     __weak HMYTextEditorView *_editorView;
     HMYFile *_file;
     NSString *_fileContent;
 }
 
-- (void)touchSave;
+- (void)touchOptions;
 - (void)keyboardWillShow:(NSNotification *)aNotification;
 - (void)keyboardWillHide:(NSNotification *)aNotification;
 
@@ -87,8 +96,8 @@ unsigned long long const HMYEditorMaxFileSize = 50000000; // 5 MB
         _fileContent = [fileText copy];
         [[_editorView editorTextView] setText:fileText];
         
-        UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(touchSave)];
-        [self.navigationItem setRightBarButtonItem:saveButton];
+        UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(touchOptions)];
+        [self.navigationItem setRightBarButtonItem:optionsButton];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -110,14 +119,11 @@ unsigned long long const HMYEditorMaxFileSize = 50000000; // 5 MB
 
 #pragma mark - Actions
 
-- (void)touchSave {
-    
-    if (![[[_editorView editorTextView] text] isEqualToString:_fileContent]) {
-        
-        UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Save File?" message:@"This acton cannot be reverted" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-        
-        [saveAlert show];
-    }
+- (void)touchOptions {
+
+    UIActionSheet *optionsSheet = [[UIActionSheet alloc] initWithTitle:@"Choose an action" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Render HTML", @"Save", @"Revert to Saved", nil];
+//    [optionsSheet showInView:self.view];
+    [optionsSheet showFromTabBar:self.tabBarController.tabBar];
 }
 
 #pragma mark - UIAlertViewDelegate methods
@@ -139,6 +145,47 @@ unsigned long long const HMYEditorMaxFileSize = 50000000; // 5 MB
     }
 }
 
+#pragma mark - UIActionSheetDelegate methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+
+    HMYTextEditorActionType action = buttonIndex - [actionSheet firstOtherButtonIndex];
+
+    switch (action) {
+        case HMYTextEditorActionTypeRenderHTML: {
+
+            NSString *HTMLString = [MMMarkdown HTMLStringWithMarkdown:[[_editorView editorTextView] text] error:nil];
+
+            HMYHTMLViewController *HTMLViewController = [[HMYHTMLViewController alloc] initWithHTMLString:HTMLString];
+
+            [self.navigationController pushViewController:HTMLViewController animated:YES];
+
+            break;
+        }
+
+        case HMYTextEditorActionTypeSave: {
+            if (![[[_editorView editorTextView] text] isEqualToString:_fileContent]) {
+
+                UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Save File?" message:@"This acton cannot be reverted" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+
+                [saveAlert show];
+            }
+            break;
+        }
+
+        case HMYTextEditorActionTypeRevertToSaved: {
+            if (![[[_editorView editorTextView] text] isEqualToString:_fileContent]) {
+                [[_editorView editorTextView] setText:_fileContent];
+            }
+
+            break;
+        }
+
+        default:
+            break;
+    }
+}
+
 #pragma mark - Notification handlers
 
 - (void)keyboardWillShow:(NSNotification *)aNotification {
@@ -147,7 +194,7 @@ unsigned long long const HMYEditorMaxFileSize = 50000000; // 5 MB
     CGRect endFrame = [endFrameValue CGRectValue];
     
     CGRect editorFrame = [[_editorView editorTextView] frame];
-    editorFrame.size.height = editorFrame.size.height - endFrame.size.height;
+    editorFrame.size.height = editorFrame.size.height - endFrame.size.height + 48.0f;
     
     [UIView animateWithDuration:0.25f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
         __strong HMYTextEditorController *sSelf = wSelf;

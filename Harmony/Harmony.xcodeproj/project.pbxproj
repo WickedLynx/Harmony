@@ -28,6 +28,18 @@
 		59A529851854B4530050050F /* HMYFavouriteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A529841854B4530050050F /* HMYFavouriteStore.m */; };
 		59A529881854B4660050050F /* HMYFavourite.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A529871854B4660050050F /* HMYFavourite.m */; };
 		59A5298E1854BE2E0050050F /* HMYFavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A5298D1854BE2E0050050F /* HMYFavouriteViewController.m */; };
+		FAEEDB9318557B1600BEEDD5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEEDB9218557B1600BEEDD5 /* QuartzCore.framework */; };
+		FAEEDB9518557B1B00BEEDD5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEEDB9418557B1B00BEEDD5 /* CoreText.framework */; };
+		FAEEDDAC1855881900BEEDD5 /* MMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDD9B1855881900BEEDD5 /* MMDocument.m */; };
+		FAEEDDAD1855881900BEEDD5 /* MMElement.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDD9E1855881900BEEDD5 /* MMElement.m */; };
+		FAEEDDAE1855881900BEEDD5 /* MMGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDA01855881900BEEDD5 /* MMGenerator.m */; };
+		FAEEDDAF1855881900BEEDD5 /* MMHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDA21855881900BEEDD5 /* MMHTMLParser.m */; };
+		FAEEDDB01855881900BEEDD5 /* MMMarkdown.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDA51855881900BEEDD5 /* MMMarkdown.m */; };
+		FAEEDDB11855881900BEEDD5 /* MMParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDA71855881900BEEDD5 /* MMParser.m */; };
+		FAEEDDB21855881900BEEDD5 /* MMScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDA91855881900BEEDD5 /* MMScanner.m */; };
+		FAEEDDB31855881900BEEDD5 /* MMSpanParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDAB1855881900BEEDD5 /* MMSpanParser.m */; };
+		FAEEDDB618558D0900BEEDD5 /* HMYHTMLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDB518558D0900BEEDD5 /* HMYHTMLView.m */; };
+		FAEEDDB918558D1800BEEDD5 /* HMYHTMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEEDDB818558D1800BEEDD5 /* HMYHTMLViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +86,30 @@
 		59A529871854B4660050050F /* HMYFavourite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMYFavourite.m; sourceTree = "<group>"; };
 		59A5298C1854BE2E0050050F /* HMYFavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMYFavouriteViewController.h; sourceTree = "<group>"; };
 		59A5298D1854BE2E0050050F /* HMYFavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMYFavouriteViewController.m; sourceTree = "<group>"; };
+		FAEEDB9218557B1600BEEDD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		FAEEDB9418557B1B00BEEDD5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		FAEEDD9A1855881900BEEDD5 /* MMDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDocument.h; sourceTree = "<group>"; };
+		FAEEDD9B1855881900BEEDD5 /* MMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDocument.m; sourceTree = "<group>"; };
+		FAEEDD9C1855881900BEEDD5 /* MMDocument_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDocument_Private.h; sourceTree = "<group>"; };
+		FAEEDD9D1855881900BEEDD5 /* MMElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMElement.h; sourceTree = "<group>"; };
+		FAEEDD9E1855881900BEEDD5 /* MMElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMElement.m; sourceTree = "<group>"; };
+		FAEEDD9F1855881900BEEDD5 /* MMGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGenerator.h; sourceTree = "<group>"; };
+		FAEEDDA01855881900BEEDD5 /* MMGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGenerator.m; sourceTree = "<group>"; };
+		FAEEDDA11855881900BEEDD5 /* MMHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMHTMLParser.h; sourceTree = "<group>"; };
+		FAEEDDA21855881900BEEDD5 /* MMHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMHTMLParser.m; sourceTree = "<group>"; };
+		FAEEDDA31855881900BEEDD5 /* MMMarkdown-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMMarkdown-Prefix.pch"; sourceTree = "<group>"; };
+		FAEEDDA41855881900BEEDD5 /* MMMarkdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMarkdown.h; sourceTree = "<group>"; };
+		FAEEDDA51855881900BEEDD5 /* MMMarkdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMarkdown.m; sourceTree = "<group>"; };
+		FAEEDDA61855881900BEEDD5 /* MMParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMParser.h; sourceTree = "<group>"; };
+		FAEEDDA71855881900BEEDD5 /* MMParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMParser.m; sourceTree = "<group>"; };
+		FAEEDDA81855881900BEEDD5 /* MMScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMScanner.h; sourceTree = "<group>"; };
+		FAEEDDA91855881900BEEDD5 /* MMScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMScanner.m; sourceTree = "<group>"; };
+		FAEEDDAA1855881900BEEDD5 /* MMSpanParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSpanParser.h; sourceTree = "<group>"; };
+		FAEEDDAB1855881900BEEDD5 /* MMSpanParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSpanParser.m; sourceTree = "<group>"; };
+		FAEEDDB418558D0900BEEDD5 /* HMYHTMLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMYHTMLView.h; sourceTree = "<group>"; };
+		FAEEDDB518558D0900BEEDD5 /* HMYHTMLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMYHTMLView.m; sourceTree = "<group>"; };
+		FAEEDDB718558D1800BEEDD5 /* HMYHTMLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMYHTMLViewController.h; sourceTree = "<group>"; };
+		FAEEDDB818558D1800BEEDD5 /* HMYHTMLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMYHTMLViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEEDB9518557B1B00BEEDD5 /* CoreText.framework in Frameworks */,
+				FAEEDB9318557B1600BEEDD5 /* QuartzCore.framework in Frameworks */,
 				59763432185304E400AB0927 /* CoreGraphics.framework in Frameworks */,
 				59763434185304E400AB0927 /* UIKit.framework in Frameworks */,
 				59763430185304E400AB0927 /* Foundation.framework in Frameworks */,
@@ -122,6 +160,8 @@
 		5976342E185304E400AB0927 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAEEDB9418557B1B00BEEDD5 /* CoreText.framework */,
+				FAEEDB9218557B1600BEEDD5 /* QuartzCore.framework */,
 				5976342F185304E400AB0927 /* Foundation.framework */,
 				59763431185304E400AB0927 /* CoreGraphics.framework */,
 				59763433185304E400AB0927 /* UIKit.framework */,
@@ -133,6 +173,7 @@
 		59763435185304E400AB0927 /* Harmony */ = {
 			isa = PBXGroup;
 			children = (
+				FAEEDB84185579D300BEEDD5 /* ThirdParty */,
 				5976345E1853053E00AB0927 /* Classes */,
 				5976343E185304E400AB0927 /* HMYAppDelegate.h */,
 				5976343F185304E400AB0927 /* HMYAppDelegate.m */,
@@ -192,6 +233,8 @@
 				5969E6EC185373F80032B997 /* HMYTextEditorController.m */,
 				59A5298C1854BE2E0050050F /* HMYFavouriteViewController.h */,
 				59A5298D1854BE2E0050050F /* HMYFavouriteViewController.m */,
+				FAEEDDB718558D1800BEEDD5 /* HMYHTMLViewController.h */,
+				FAEEDDB818558D1800BEEDD5 /* HMYHTMLViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -223,8 +266,52 @@
 				59763467185309CB00AB0927 /* HMYFilesView.m */,
 				5969E6EE185374190032B997 /* HMYTextEditorView.h */,
 				5969E6EF185374190032B997 /* HMYTextEditorView.m */,
+				FAEEDDB418558D0900BEEDD5 /* HMYHTMLView.h */,
+				FAEEDDB518558D0900BEEDD5 /* HMYHTMLView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FAEEDB84185579D300BEEDD5 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				FAEEDD981855880700BEEDD5 /* MMMarkdown */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		FAEEDD981855880700BEEDD5 /* MMMarkdown */ = {
+			isa = PBXGroup;
+			children = (
+				FAEEDD991855881900BEEDD5 /* Source */,
+			);
+			name = MMMarkdown;
+			sourceTree = "<group>";
+		};
+		FAEEDD991855881900BEEDD5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FAEEDD9A1855881900BEEDD5 /* MMDocument.h */,
+				FAEEDD9B1855881900BEEDD5 /* MMDocument.m */,
+				FAEEDD9C1855881900BEEDD5 /* MMDocument_Private.h */,
+				FAEEDD9D1855881900BEEDD5 /* MMElement.h */,
+				FAEEDD9E1855881900BEEDD5 /* MMElement.m */,
+				FAEEDD9F1855881900BEEDD5 /* MMGenerator.h */,
+				FAEEDDA01855881900BEEDD5 /* MMGenerator.m */,
+				FAEEDDA11855881900BEEDD5 /* MMHTMLParser.h */,
+				FAEEDDA21855881900BEEDD5 /* MMHTMLParser.m */,
+				FAEEDDA31855881900BEEDD5 /* MMMarkdown-Prefix.pch */,
+				FAEEDDA41855881900BEEDD5 /* MMMarkdown.h */,
+				FAEEDDA51855881900BEEDD5 /* MMMarkdown.m */,
+				FAEEDDA61855881900BEEDD5 /* MMParser.h */,
+				FAEEDDA71855881900BEEDD5 /* MMParser.m */,
+				FAEEDDA81855881900BEEDD5 /* MMScanner.h */,
+				FAEEDDA91855881900BEEDD5 /* MMScanner.m */,
+				FAEEDDAA1855881900BEEDD5 /* MMSpanParser.h */,
+				FAEEDDAB1855881900BEEDD5 /* MMSpanParser.m */,
+			);
+			name = Source;
+			path = "MMMarkdown/MMMarkdown-master/Source";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,13 +411,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEEDDB918558D1800BEEDD5 /* HMYHTMLViewController.m in Sources */,
 				5976343C185304E400AB0927 /* main.m in Sources */,
 				59A5298E1854BE2E0050050F /* HMYFavouriteViewController.m in Sources */,
+				FAEEDDAD1855881900BEEDD5 /* MMElement.m in Sources */,
+				FAEEDDB21855881900BEEDD5 /* MMScanner.m in Sources */,
+				FAEEDDAF1855881900BEEDD5 /* MMHTMLParser.m in Sources */,
+				FAEEDDAE1855881900BEEDD5 /* MMGenerator.m in Sources */,
 				59763468185309CB00AB0927 /* HMYFilesView.m in Sources */,
 				59A529881854B4660050050F /* HMYFavourite.m in Sources */,
+				FAEEDDB618558D0900BEEDD5 /* HMYHTMLView.m in Sources */,
 				5976346B1853150800AB0927 /* HMYFile.m in Sources */,
 				59763465185309B500AB0927 /* HMYFilesViewController.m in Sources */,
+				FAEEDDB01855881900BEEDD5 /* MMMarkdown.m in Sources */,
 				5969E6ED185373F80032B997 /* HMYTextEditorController.m in Sources */,
+				FAEEDDAC1855881900BEEDD5 /* MMDocument.m in Sources */,
+				FAEEDDB11855881900BEEDD5 /* MMParser.m in Sources */,
+				FAEEDDB31855881900BEEDD5 /* MMSpanParser.m in Sources */,
 				5969E6F0185374190032B997 /* HMYTextEditorView.m in Sources */,
 				59A529851854B4530050050F /* HMYFavouriteStore.m in Sources */,
 				59763440185304E400AB0927 /* HMYAppDelegate.m in Sources */,
@@ -455,10 +552,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Harmony/Harmony-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/ThirdParty/Bypass/bypass-master/platform/ios/Bypass/Bypass",
+				);
 				INFOPLIST_FILE = "Harmony/Harmony-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/harshad/Documents/Development/CocoaTouch/Bobcat/Repos/Harmony/Harmony/Harmony/Harmony/ThirdParty/MMMarkdown/MMMarkdown-master/lib",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7207C9D8-7C5F-4D53-B9EE-4E767C520C03";
+				PROVISIONING_PROFILE = "00079541-A0D7-4835-A5E9-F10D9160CFE8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -471,10 +578,20 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Harmony/Harmony-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/ThirdParty/Bypass/bypass-master/platform/ios/Bypass/Bypass",
+				);
 				INFOPLIST_FILE = "Harmony/Harmony-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/harshad/Documents/Development/CocoaTouch/Bobcat/Repos/Harmony/Harmony/Harmony/Harmony/ThirdParty/MMMarkdown/MMMarkdown-master/lib",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7207C9D8-7C5F-4D53-B9EE-4E767C520C03";
+				PROVISIONING_PROFILE = "00079541-A0D7-4835-A5E9-F10D9160CFE8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
